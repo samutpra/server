@@ -10,7 +10,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=5555
-      - CLIENT_URL=http://localhost:6666
+      - CLIENT_URL=http://localhost:3333
       - DATABASE_URL=file:./prisma/dev.db
     volumes:
       - ./prisma:/app/prisma

@@ -10,7 +10,7 @@ import { cronJobManager } from './jobs/cronJobManager'
 import { swagger } from '@elysiajs/swagger'
 
 const PORT = process.env.PORT || 5555
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:6666'
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3333'
 
 const app = new Elysia()
   .use(swagger({

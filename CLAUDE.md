@@ -14,6 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `bunx prisma db push` - Push schema changes to SQLite database
 - `bunx prisma studio` - Open Prisma Studio for database management
 - `bun run prisma/seed.ts` - Seed the database with test data
+- `curl -X POST http://localhost:5555/api/seed` - Seed database via API endpoint
 
 ### Docker Commands
 - `docker-compose up --build` - Build and start containerized application
@@ -49,7 +50,8 @@ src/
 ├── routes/             # Route definitions
 │   ├── index.ts        # Route aggregation
 │   ├── notificationRoutes.ts
-│   └── cronJobRoutes.ts
+│   ├── cronJobRoutes.ts
+│   └── seedRoutes.ts
 ├── controllers/        # Request handlers
 ├── services/           # Business logic layer
 ├── websocket/          # WebSocket connection management
@@ -61,6 +63,7 @@ src/
 - **Dynamic Scheduling**: Runtime cron job creation and management
 - **Dual Notification System**: System broadcasts and user-to-user messaging
 - **Admin Interface Support**: Role-based access for cron job management
+- **Database Seeding**: API endpoint for populating test data
 
 ### Deployment Options
 
@@ -77,6 +80,6 @@ src/
 
 ### Environment Configuration
 - **PORT**: Application port (default: 5555)
-- **CLIENT_URL**: CORS allowed origin (default: http://localhost:6666)
+- **CLIENT_URL**: CORS allowed origin (default: http://localhost:3333)
 - **DATABASE_URL**: SQLite database path (file:./prisma/dev.db)
 - **NODE_ENV**: Runtime environment (production for Docker)

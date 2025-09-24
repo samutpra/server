@@ -37,6 +37,11 @@
 | `POST` | `/api/cronjobs/:id/start` | Start job |
 | `POST` | `/api/cronjobs/:id/stop` | Stop job |
 
+### Database
+| Method | Endpoint | Purpose |
+|--------|----------|---------|
+| `POST` | `/api/seed` | Seed database with test data |
+
 ### WebSocket
 - Local: `ws://localhost:5555/ws`
 - Docker: `ws://localhost:5555/ws`
@@ -49,6 +54,7 @@
 ```bash
 bun dev                # Development with hot reload
 bun run db:seed        # Seed test data
+curl -X POST http://localhost:5555/api/seed  # Seed via API
 ```
 
 #### Docker Compose
