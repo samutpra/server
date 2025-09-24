@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  notification-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5555:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - CLIENT_URL=http://localhost:3000
+      - DATABASE_URL=file:./prisma/dev.db
+    volumes:
+      - ./prisma:/app/prisma
+      - db_data:/app/prisma
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: alpine:latest
+    volumes:
+      - db_data:/data
+    command: ["sleep", "infinity"]
+    restart: unless-stopped
+
+volumes:
+  db_data:
