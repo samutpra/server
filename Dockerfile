@@ -18,7 +18,7 @@ RUN bunx prisma generate
 RUN bun run build
 
 # Expose port
-EXPOSE 3001
+EXPOSE 5555
 
 # Start the application
 CMD ["bun", "start"]

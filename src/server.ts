@@ -9,8 +9,8 @@ import {
 import { cronJobManager } from './jobs/cronJobManager'
 import { swagger } from '@elysiajs/swagger'
 
-const PORT = process.env.PORT || 3001
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000'
+const PORT = process.env.PORT || 5555
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:6666'
 
 const app = new Elysia()
   .use(swagger({
@@ -24,7 +24,7 @@ const app = new Elysia()
         {
           url: `http://localhost:${PORT}`,
           description: 'Development server'
-        }
+        },
       ],
       tags: [
         {
@@ -62,9 +62,9 @@ const app = new Elysia()
       ]
     },
     testing: {
-      websocket_connect: 'ws://localhost:3001/ws',
+      websocket_connect: `ws://localhost:${PORT}/ws`,
       sample_register: '{"type": "register", "userId": "user1"}',
-      sample_notification: 'curl -X POST http://localhost:3001/api/notifications -H "Content-Type: application/json" -d \'{"title": "Test", "message": "Hello", "type": "info", "category": "system"}\''
+      sample_notification: `curl -X POST http://localhost:${PORT}/api/notifications -H "Content-Type: application/json" -d \'{"title": "Test", "message": "Hello", "type": "info", "category": "system"}\'`
     },
     fun_fact: 'Server นี้ใช้ Bun + Elysia เร็วมากกก! ⚡️'
   }))

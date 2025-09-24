@@ -38,7 +38,7 @@
 | `POST` | `/api/cronjobs/:id/stop` | Stop job |
 
 ### WebSocket
-- Local: `ws://localhost:3001/ws`
+- Local: `ws://localhost:5555/ws`
 - Docker: `ws://localhost:5555/ws`
 
 ## Usage
@@ -68,9 +68,9 @@ docker-compose logs -f notification-server
 
 ### Test API
 ```bash
-# Local development (port 3001)
-curl http://localhost:3001/ping
-curl http://localhost:3001/swagger
+# Local development (port 5555)
+curl http://localhost:5555/ping
+curl http://localhost:5555/swagger
 
 # Docker compose (port 5555)
 curl http://localhost:5555/ping
@@ -80,7 +80,7 @@ curl http://localhost:5555/swagger
 ### Create Notification
 ```bash
 # System notification (to all users)
-curl -X POST http://localhost:3001/api/notifications \
+curl -X POST http://localhost:5555/api/notifications \
   -H "Content-Type: application/json" \
   -d '{
     "title": "System Alert",
@@ -90,7 +90,7 @@ curl -X POST http://localhost:3001/api/notifications \
   }'
 
 # User-to-user notification
-curl -X POST http://localhost:3001/api/notifications \
+curl -X POST http://localhost:5555/api/notifications \
   -H "Content-Type: application/json" \
   -d '{
     "userId": "user2",
