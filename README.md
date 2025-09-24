@@ -38,20 +38,43 @@
 | `POST` | `/api/cronjobs/:id/stop` | Stop job |
 
 ### WebSocket
-- `ws://localhost:3001/ws` → Real-time notifications
+- Local: `ws://localhost:3001/ws`
+- Docker: `ws://localhost:5555/ws`
 
 ## Usage
 
 ### Start Server
+
+#### Local Development
 ```bash
-bun dev                # Development
+bun dev                # Development with hot reload
 bun run db:seed        # Seed test data
+```
+
+#### Docker Compose
+```bash
+# Build and start containers
+docker-compose up --build
+
+# Run in background
+docker-compose up -d
+
+# Stop containers
+docker-compose down
+
+# View logs
+docker-compose logs -f notification-server
 ```
 
 ### Test API
 ```bash
+# Local development (port 3001)
 curl http://localhost:3001/ping
 curl http://localhost:3001/swagger
+
+# Docker compose (port 5555)
+curl http://localhost:5555/ping
+curl http://localhost:5555/swagger
 ```
 
 ### Create Notification
